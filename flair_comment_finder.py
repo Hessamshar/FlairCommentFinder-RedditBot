@@ -45,7 +45,7 @@ def bot_run(reddit, subreddit):
                 else:
                     reddit.comment(bot_comment_id).edit(comment_reply)
                     print("Editing bot's sticky comment: ", new_comment.submission.title)
-    print("Bot in rest for 10 seconds")
+    print("Bot in rest for " + str(BOT_SLEEP_TIME) + " seconds")
     time.sleep(BOT_SLEEP_TIME)
 
 # Bot going to an infinite loop in order to be always on
