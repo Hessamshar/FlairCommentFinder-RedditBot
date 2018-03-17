@@ -40,12 +40,12 @@ def bot_run(reddit, subreddit):
             if bot_comment_id == 0:
                 bot_comment = new_comment.submission.reply(comment_reply)
                 bot_comment.mod.distinguish(sticky=True)
-                print("Creating bot's sticky comment: ",
-                      new_comment.submission.title)
+                print("Creating bot's sticky comment:",
+                      new_comment.submission.title, time.ctime())
             else:
                 reddit.comment(bot_comment_id).edit(comment_reply)
-                print("Editing bot's sticky comment: ",
-                      new_comment.submission.title)
+                print("Editing bot's sticky comment:",
+                      new_comment.submission.title, time.ctime())
 
 reddit = bot_login()
 subreddit = reddit.subreddit(SUBREDDIT_NAME)
