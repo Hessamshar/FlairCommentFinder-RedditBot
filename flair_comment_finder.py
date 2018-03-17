@@ -8,10 +8,7 @@ SUBREDDIT_NAME = "EpicCommentFinderBot"
 AUTHOR_FLAIR = "Epic Games"
 # Bot's username
 BOT_USERNAME = "EpicCommentFinder"
-# Number of new comments the bot checks
-COMMENTS_LIMIT = 25
-# The time the bot goes to rest after checking the new comments
-BOT_SLEEP_TIME = 10
+
 
 # Loggin in the bot
 def bot_login():
@@ -21,6 +18,7 @@ def bot_login():
                     username=config.username,
                     user_agent=config.user_agent)
     return r
+
 
 def bot_run(reddit, subreddit):
     for new_comment in subreddit.stream.comments():
@@ -32,17 +30,22 @@ def bot_run(reddit, subreddit):
             for s_comment in new_comment.submission.comments.list():
                 if s_comment.author.name == BOT_USERNAME:
                     bot_comment_id = s_comment.id
-                if AUTHOR_FLAIR.lower() in str(s_comment.author_flair_text).lower():
+                if AUTHOR_FLAIR.lower() in str(s_comment.
+                                               author_flair_text).lower():
                     counter += 1
-                    comment_reply += "[EPIC COMMENT #" + str(counter) + " - " + s_comment.author.name + "]" + "(https://www.reddit.com" + s_comment.permalink + ")\n\n"
+                    comment_reply += "[EPIC COMMENT #" + str(counter)\
+                        + " - " + s_comment.author.name + "]"\
+                        + "(https://www.reddit.com" + s_comment.permalink\
+                        + ")\n\n"
             if bot_comment_id == 0:
                 bot_comment = new_comment.submission.reply(comment_reply)
                 bot_comment.mod.distinguish(sticky=True)
-                print("Creating bot's sticky comment: ", new_comment.submission.title)
+                print("Creating bot's sticky comment: ",
+                      new_comment.submission.title)
             else:
                 reddit.comment(bot_comment_id).edit(comment_reply)
-                print("Editing bot's sticky comment: ", new_comment.submission.title)
-    print("Bot in rest for " + str(BOT_SLEEP_TIME) + " seconds")
+                print("Editing bot's sticky comment: ",
+                      new_comment.submission.title)
 
 reddit = bot_login()
 subreddit = reddit.subreddit(SUBREDDIT_NAME)
