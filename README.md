@@ -1,1 +1,1 @@
-# FlairCommentFinder-RedditBot
+# Flair Comment Finder (Reddit Bot)
