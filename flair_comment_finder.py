@@ -3,11 +3,11 @@ import config
 import time
 
 # Name of the subreddit
-SUBREDDIT_NAME = "EpicCommentFinderBot"
+SUBREDDIT_NAME = "Subreddit Name"
 # The word the bot looks for in the comment's flair
-AUTHOR_FLAIR = "Epic Games"
+AUTHOR_FLAIR = "Flair"
 # Bot's username
-BOT_USERNAME = "EpicCommentFinder"
+BOT_USERNAME = "Username"
 
 
 # Loggin in the bot
@@ -33,7 +33,7 @@ def bot_run(reddit, subreddit):
                 if AUTHOR_FLAIR.lower() in str(s_comment.
                                                author_flair_text).lower():
                     counter += 1
-                    comment_reply += "[EPIC COMMENT #" + str(counter)\
+                    comment_reply += "[COMMENT #" + str(counter)\
                         + " - " + s_comment.author.name + "]"\
                         + "(https://www.reddit.com" + s_comment.permalink\
                         + ")\n\n"
