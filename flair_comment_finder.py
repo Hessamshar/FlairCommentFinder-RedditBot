@@ -10,7 +10,7 @@ AUTHOR_FLAIR = "Flair"
 BOT_USERNAME = "Username"
 
 
-# Loggin in the bot
+# Log in the bot
 def bot_login():
     r = praw.Reddit(client_id=config.client_id,
                     client_secret=config.client_secret,
